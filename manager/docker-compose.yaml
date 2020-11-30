@@ -2,7 +2,7 @@ version: "3"
 services:
   manager:
     build: .
-    command: py __main__.py
+    command: python /app/__main__.py
     ports:
       - 5000:5000
   database:    
