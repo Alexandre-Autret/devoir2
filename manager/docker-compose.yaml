@@ -1,9 +1,15 @@
-version: '3'
+version: "3"
 services:
-	mydb:
-		image: postgres
-		ports: 5432:5432
-		environment:
-			POSTGRES_PASSWORD = mypw
-			POSTGRES_USER = AAutret
-			POSTGRES_DB = mydb
+  manager:
+    image: postgres    
+    environment:
+      - POSTGRES_PASSWORD=mypw
+      - POSTGRES_USER=AAutret
+      - POSTGRES_DB=mydb
+  code:
+    build: .
+    command: py __main__.py
+    ports:
+      - "5432:5432"
+    depends_on:
+      - manager
