@@ -1,0 +1,9 @@
+version: '3'
+services:
+	mydb:
+		image: postgres
+		ports: 5432:5432
+		environment:
+			POSTGRES_PASSWORD = mypw
+			POSTGRES_USER = AAutret
+			POSTGRES_DB = mydb
