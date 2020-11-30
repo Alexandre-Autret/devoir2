@@ -1,15 +1,17 @@
 version: "3"
 services:
   manager:
+    build: .
+    command: py __main__.py
+    ports:
+      - 5000:5000
+  database:    
     image: postgres    
     environment:
       - POSTGRES_PASSWORD=mypw
       - POSTGRES_USER=AAutret
-      - POSTGRES_DB=mydb
-  code:
-    build: .
-    command: py __main__.py
+      - POSTGRES_DB=db
+      - CSV_FILENAME=data.csv
+      - TESTING=1
     ports:
       - "5432:5432"
-    depends_on:
-      - manager
